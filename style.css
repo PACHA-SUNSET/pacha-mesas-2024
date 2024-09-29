@@ -1,0 +1,166 @@
+body {
+  display: flex;
+  flex-direction: column; /* Apilar elementos en columna */
+  justify-content: flex-start; /* Alinea hacia arriba */
+  align-items: center; /* Centra horizontalmente */
+  min-height: 100vh; /* Asegura que ocupe al menos la altura completa de la ventana */
+  margin: 0; /* Elimina márgenes */
+  padding: 0; /* Elimina padding */
+  background: linear-gradient(to bottom, rgba(255, 165, 0, 0.8), rgba(0, 0, 0, 0.9), rgba(0, 0, 255, 0.6)); /* Gradiente vertical */
+}
+.container {
+  display: grid;
+  gap: 20px; /* Espacio entre las cruces */
+  width: 90%; /* Ancho general */
+  max-width: 1000px; /* Ancho máximo para pantallas grandes */
+  margin: 0; /* Elimina márgenes */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adaptable a diferentes tamaños */
+}
+
+.cruz {
+  position: relative;
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: 100px; /* Alto total de la cruz */
+  max-width: 120px; /* Máximo ancho de la cruz */
+}
+
+.brazo {
+  position: absolute;
+}
+
+.vertical {
+  width: 70px; /* Ancho del brazo vertical */
+  height: 80px; /* Alto del brazo vertical */
+  background-color: black; /* Color negro */
+  left: 17px; /* Centrado horizontalmente */
+  top: 10px; /* Posición desde arriba */
+  z-index: 1; /* Asegura que este brazo esté debajo */
+  border-radius: 0; /* Sin borde redondeado */
+}
+
+.horizontal {
+  width: 90px; /* Ancho del brazo horizontal */
+  height: 58px; /* Alto del brazo horizontal */
+  background-image: linear-gradient(0deg, #8B4513 25%, #A0522D 25%, #A0522D 50%, #8B4513 50%, #8B4513 75%, #A0522D 75%, #A0522D 100%);
+  background-size: 20px 10px; /* Tamaño del patrón (más ancho) */
+  border: 2px solid black; /* Borde negro */
+  left: 5px; /* Centrado horizontalmente */
+  top: 21px; /* Posición desde arriba */
+  z-index: 2; /* Asegura que este brazo esté encima */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+.label {
+  position: absolute;
+  top: 5px; /* Coloca el texto en la parte superior */
+  left: 50%; /* Centra horizontalmente el texto */
+  transform: translateX(-50%); /* Corrige el centrado */
+  color: white; /* Color del texto */
+  font-weight: bold; /* Texto en negrita */
+  text-align: center; /* Alinear texto al centro */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+
+.number {
+  position: absolute;
+  top: 30px; /* Ajusta la posición vertical según necesites */
+  left: 50%; /* Centra horizontalmente el texto */
+  transform: translateX(-50%); /* Corrige el centrado */
+  color: gold; /* Color del número */
+  font-weight: bold; /* Texto en negrita */
+  text-align: center; /* Alinear texto al centro */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+.summary {
+  margin-top: 10px; /* Espacio entre las cruces y el total */
+  text-align: center; /* Centra el total */
+  width: 90%; /* Ancho general */
+  max-width: 600px;
+  padding: 10px;
+  border: 1px solid #ccc; /* Borde alrededor del total */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco */
+  font-size: 1em; /* Tamaño de fuente más pequeño */
+}
+
+.mesa-counts {
+  margin-top: 10px; /* Espacio entre la sección de total y mesa-counts */
+  color: white; /* Texto blanco */
+  font-size: 0
+    1.5em; /* Tamaño de fuente más pequeño */
+}
+
+.mesa-counts p {
+  display: flex;
+  justify-content: space-between; /* Espacio entre etiqueta y valor */
+  margin: 5px 0; /* Espacio entre los párrafos */
+  padding: 3px; /* Espacio interno más pequeño */
+  border-bottom: 1px solid #555; /* Línea divisoria oscura */
+}
+
+.mesa-counts p:last-child {
+  border-bottom: none; /* Sin línea en el último párrafo */
+}
+
+/* Estilo para "Cuenta monto depositado" */
+.mesa-counts .cuenta-monto {
+  font-size: 0.8em; /* Tamaño de fuente más pequeño */
+}
+.brazo:hover::after {
+    content: attr(data-tooltip); /* Usar data-tooltip en lugar de title */
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(148, 0, 211, 0.7), rgba(0, 0, 255, 0.5));
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 1.2em;
+    top: 40px; /* Ajusta la posición según necesites */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: block;
+}
+
+
+/* Estilo para dispositivos pequeños */
+@media (max-width: 600px) {
+  .summary{
+    margin-top: 20px; /* Mayor espacio entre total y mesas en pantallas pequeñas */
+  
+      
+   }
+  
+  
+
+  .cruz {
+    height: 80px; /* Ajusta la altura de la cruz en pantallas pequeñas */
+  }
+}
+
+table {
+  background-color: black; /* Color de fondo de los encabezados */
+  width: 100%; /* Ocupa todo el ancho */
+  border-collapse: collapse; /* Elimina espacios entre celdas */
+}
+
+th, td {
+  border: 1px solid #ccc; /* Borde gris claro */
+  padding: 8px; /* Espaciado interno */
+  text-align: left; /* Alinear texto a la izquierda */
+}
+
+th {
+  background-color: black; /* Color de fondo de los encabezados */
+}
+
+tbody tr:hover {
+  background-image: linear-gradient(to right, blue, purple); /* Degradado azul a morado */
+}
+
+td:nth-child(2) {
+  text-align: right; /* Alinear montos a la derecha */
+}
