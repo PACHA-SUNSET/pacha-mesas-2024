@@ -130,11 +130,11 @@ body {
 @media (max-width: 600px) {
   .summary{
     margin-top: 20px; /* Mayor espacio entre total y mesas en pantallas pequeñas */
-  
-      
+
+
    }
-  
-  
+
+
 
   .cruz {
     height: 80px; /* Ajusta la altura de la cruz en pantallas pequeñas */
